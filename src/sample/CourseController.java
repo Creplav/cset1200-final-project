@@ -36,24 +36,24 @@ public class CourseController {
 			Course elective4 = new Course("Elective", 3100, 3);
 		}
 		private static class junior2{
-		Course elective5 = new Course("Elective", 3200, 3);
-		Course course22 = new Course("CET", 3160, 3);
-		Course course23 = new Course("ENGT", 3010, 4);
-		Course course24 = new Course("CET", 3220, 3);
-		Course course25 = new Course("CET", 3120, 3);	
+			Course elective5 = new Course("Elective", 3200, 3);
+			Course course22 = new Course("CET", 3160, 3);
+			Course course23 = new Course("ENGT", 3010, 4);
+			Course course24 = new Course("CET", 3220, 3);
+			Course course25 = new Course("CET", 3120, 3);	
 		}
 		private static class senior1{
-		Course course26 = new Course("CET", 4460, 3);
-		Course course27 = new Course("CET", 4250, 4);
-		Course course28 = new Course("ENGT", 3600, 3);
-		Course elective6 = new Course("Elective", 4000, 3);
-		Course elective7 = new Course("Elective", 4100, 3);
+			Course course26 = new Course("CET", 4460, 3);
+			Course course27 = new Course("CET", 4250, 4);
+			Course course28 = new Course("ENGT", 3600, 3);
+			Course elective6 = new Course("Elective", 4000, 3);
+			Course elective7 = new Course("Elective", 4100, 3);
 		}
 		private static class senior2{	
-		Course course29 = new Course("ENGT", 4050, 3);
-		Course course30 = new Course("CET", 4350, 4);
-		Course elective7 = new Course("Elective", 4200, 3);
-		Course elective8 = new Course("Elective", 4300, 3);
-		Course elective9 = new Course("Elective", 4400, 3);
+			Course course29 = new Course("ENGT", 4050, 3);
+			Course course30 = new Course("CET", 4350, 4);
+			Course elective7 = new Course("Elective", 4200, 3);
+			Course elective8 = new Course("Elective", 4300, 3);
+			Course elective9 = new Course("Elective", 4400, 3);
 		}
 }
