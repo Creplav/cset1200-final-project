@@ -23,4 +23,16 @@ public class Student {
         this.rocketNumber = rocketNumber;
         this.year = year;
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getRocketNumber(){
+        return rocketNumber;
+    }
+
+    public String getYear(){
+        return year;
+    }
 }
