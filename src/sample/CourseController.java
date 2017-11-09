@@ -1,5 +1,5 @@
 public class CourseController {
-	//A new object called "elective" has been introduced which extends the course object
+	//A new object called "elective" has been introduced which extends the course object. Nested classes have been created for each semester
 		private static class freshman1{
 			Course course1 = new Course("ENGT", 1000, 1);
 			Course course2 = new Course("MATH", 1330, 3);
