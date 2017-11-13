@@ -44,8 +44,8 @@ public class CourseController {
 			senior1.add(new Course("Elective", 4100, 3));
 		ArrayList<Course> senior2 = new ArrayList<>();	
 			senior2.add(new Course("ENGT", 4050, 3));
-			Course course30 = new Course("CET", 4350, 4));
-			Course elective7 = new Course("Elective", 4200, 3));
-			Course elective8 = new Course("Elective", 4300, 3));
-			Course elective9 = new Course("Elective", 4400, 3));
+			Csenior2.add(new Course("CET", 4350, 4));
+			senior2.add(new Course("Elective", 4200, 3));
+			senior2.add(new Course("Elective", 4300, 3));
+			senior2.add(new Course("Elective", 4400, 3));
 }
