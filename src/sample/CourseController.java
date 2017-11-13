@@ -12,7 +12,7 @@ public class CourseController {
 			freshman2.add(new Course("CET", 1210, 3));
 			freshman2.add(new Course("ENGL", 2950, 3));
 			freshman2.add(new Course("CET",1250, 3));
-			freshman2.add(new Course("Elective", 1000, 3))
+			freshman2.add(new Course("Elective", 1000, 3));
 		ArrayList<Course> sophomore1 = new ArrayList<>();
 			sophomore1.add(new Course("PHYS", 2020, 5));
 			sophomore1.add(new Course("CET", 1200, 4));
