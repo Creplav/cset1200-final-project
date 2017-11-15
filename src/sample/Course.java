@@ -1,6 +1,6 @@
 package sample;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * This class holds course data such as the subject, course code, and credit hours
@@ -17,7 +17,7 @@ public class Course {
     private char grade;
     // TODO See if List is the proper data type to use
     // List of prereqs for the class
-    private List<Course> prerequisites;
+    private ArrayList<Course> prerequisites;
     // Boolean for course completion
     boolean completed;
 
@@ -43,7 +43,7 @@ public class Course {
      * @param prerequisites
      * @param completed
      */
-    public Course(String subject, int courseCode, int creditHours, List<Course> prerequisites, boolean completed){
+    public Course(String subject, int courseCode, int creditHours, ArrayList<Course> prerequisites, boolean completed){
         this.subject = subject;
         this.courseCode = courseCode;
         this.creditHours = creditHours;
@@ -73,7 +73,7 @@ public class Course {
      * Gets all the prerequisites the course has
      * @return prerequisites
      */
-    public List<Course> getPrerequisites() { return this.prerequisites; }
+    public ArrayList<Course> getPrerequisites() { return this.prerequisites; }
 
     /**
      * Checks to see if the course has been completed
@@ -91,7 +91,6 @@ public class Course {
             if(course.isCompleted())
                 completed++;
         }
-        if(completed == this.prerequisites.size()) return true;
-        else return false;
+        return completed == this.prerequisites.size();
     }
 }

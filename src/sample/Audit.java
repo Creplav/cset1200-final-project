@@ -8,35 +8,57 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 /**
- * Created by ben on 11/8/17.
+ * This class holds the GUI for the audit
  */
 public class Audit {
+    CourseController courseController;
+
+    GridPane pane;
+    public Audit(){
+        courseController = new CourseController();
+    }
 
     public void show(Stage primaryStage){
 
-        ArrayList<Course> courses = new ArrayList<>();
-        courses.add(new Course("CSET", 1200, 3, true));
-        courses.add(new Course("CSET", 3100, 3, false));
-        courses.add(new Course("ENGT", 2100, 4, false));
+        // Set the title of the stage
+        primaryStage.setTitle("Audit for ");
+        this.pane = new GridPane();
+        primaryStage.setScene(new Scene(pane, 750, 600));
+        getCourses();
+        primaryStage.show();
+    }
 
-        primaryStage.setTitle("Hello World");
-        GridPane pane = new GridPane();
-        primaryStage.setScene(new Scene(pane, 300, 275));
-        int i = 0;
+    private void getCourses() {
+        ArrayList<Course> courses;
+        int row = 0;
+        // Loop through year
+        for(int i = 1; i < 5; i++){
+            // Loop through semester
+            for(int j = 1; j < 3; j++){
+                // Get the correct courses
+                courses = courseController.getCourseList(i, j);
+                // Add the buttons
+                addCourseButtons(pane, courses, row);
+                // Add a new row
+                row++;
+            }
+        }
+    }
+
+    private void addCourseButtons(GridPane pane, ArrayList<Course> courses, int row){
+        int k = 0;
         for (Course course : courses) {
             Button button = new Button(course.getSubject() + course.getCourseCode() + '\n'
                     + course.getCreditHours() + " hours");
             button.setPrefSize(125, 75);
-            if(course.isCompleted()){
+            if (course.isCompleted()) {
                 button.setStyle("-fx-background-color: #00FF00");
-            }
-            else button.setStyle("-fx-background-color: #990000");
+            } else button.setStyle("-fx-background-color: #AA0000");
             pane.setHgap(10);
             pane.setVgap(10);
-            pane.addColumn(i);
-            pane.add(button, i, 0);
-            i++;
+            pane.addColumn(k);
+            pane.add(button, k, row);
+            k++;
         }
-        primaryStage.show();
     }
 }
