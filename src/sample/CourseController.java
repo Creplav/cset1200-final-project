@@ -3,6 +3,7 @@ package sample;
 import java.util.ArrayList;
 
 /**
+ * Created by Naba
  * This class holds all of the courses for the CET degree
  * The course controller manages all of the courses required for the degree.
  * It handles add the courses to the lists of courses.
