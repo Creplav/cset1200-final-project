@@ -18,14 +18,11 @@ import javafx.stage.Stage;
  */
 public class Login {
 
-
-     public static boolean isValid(String pw) {
-        return pw.matches("[a-zA-Z0-9]{8,}");
-}
     public void show(Stage stage){
         GridPane pane = new GridPane();
         stage.setTitle("Login");
-        stage.setScene(new Scene(pane, 500, 300));
+        stage.setScene(new Scene(pane, 700, 300));
+        pane.getStylesheets().add("sample/custom.css");
         TextField nameField = new TextField();
         PasswordField rocketNumberField = new PasswordField();
         pane.add(new Label("Login"), 1, 0);
@@ -40,7 +37,8 @@ public class Login {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                boolean valid = true;
+
+                //TODO Fix the character
                 for (int i = 1; i < rocketNumberField.getText().length() -1; i++)
                 {
                      char l = rocketNumberField.getText().charAt(i);
@@ -56,8 +54,9 @@ public class Login {
                     pane.add(new Label("At least one required text field is empty"), 0,6);
                     return;
                 }
+                Student student = new Student(nameField.getText(), rocketNumberField.getText(), "Freshman");
                 //((Node)(event.getSource())).getScene().getWindow().hide();
-                Audit audit = new Audit();
+                Audit audit = new Audit(student);
                 audit.show(stage);
             }
         });

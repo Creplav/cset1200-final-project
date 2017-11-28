@@ -40,6 +40,10 @@ public class CourseController {
 		addSeniorCourses();
 	}
 
+
+	//TODO Add names for the courses
+
+
 	/**
 	 * Adds courses to freshman level course lists
 	 */
@@ -157,5 +161,37 @@ public class CourseController {
 		}
 		// Default to fall freshman year
 		else return freshman1;
+	}
+
+	public int getCurrentHours(){
+		int hours = 0;
+		for(int i = 1; i < 5; i++){
+			for(int k = 1; k < 3; k++){
+				ArrayList<Course> courses = getCourseList(i, k);
+				for(Course course: courses){
+					if(course.isCompleted()){
+						hours += course.getCreditHours();
+					}
+				}
+			}
+		}
+
+		return hours;
+	}
+
+	public int getRemainingHours(){
+		int hours = 0;
+		for(int i = 1; i < 5; i++){
+			for(int k = 1; k < 3; k++){
+				ArrayList<Course> courses = getCourseList(i, k);
+				for(Course course: courses){
+					if(!course.isCompleted()){
+						hours += course.getCreditHours();
+					}
+				}
+			}
+		}
+
+		return hours;
 	}
 }
