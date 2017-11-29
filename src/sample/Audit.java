@@ -57,6 +57,19 @@ public class Audit {
             }
         }
     }
+    
+    private String getYear(int year){
+        switch(year){
+            case 1: return "Freshman";
+                break;
+            case 2: return "Sophomore";
+                break;
+            case 3: return "Junior";
+                break;
+            case 4: return "Senior";
+                break;
+        }
+    }
 
     private void addCourseButtons(GridPane pane, ArrayList<Course> courses, int row){
         int k = 0;
