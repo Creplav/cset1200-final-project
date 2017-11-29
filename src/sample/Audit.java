@@ -46,6 +46,8 @@ public class Audit {
         int row = 0;
         // Loop through year
         for(int i = 1; i < 5; i++){
+            Label yearLabel = new Label(getYear(i));
+            pane.add(yearLabel, 0, row);
             // Loop through semester
             for(int j = 1; j < 3; j++){
                 // Get the correct courses
