@@ -18,6 +18,7 @@ public class Course {
     // TODO See if List is the proper data type to use
     // List of prereqs for the class
     private ArrayList<Course> prerequisites;
+    private String courseName;
     // Boolean for course completion
     boolean completed;
 
@@ -28,10 +29,11 @@ public class Course {
      * @param creditHours
      * @param completed
      */
-    public Course(String subject, int courseCode, int creditHours, boolean completed){
+    public Course(String subject, int courseCode, int creditHours, String courseName, boolean completed){
         this.subject = subject;
         this.courseCode = courseCode;
         this.creditHours = creditHours;
+        this.courseName = courseName;
         this.completed = completed;
     }
 
