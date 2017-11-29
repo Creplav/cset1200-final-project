@@ -45,10 +45,11 @@ public class Audit {
         ArrayList<Course> courses;
         int row = 0;
         // Loop through year
-        for(int i = 1; i < 5; i++){
-            Label yearLabel = new Label(getYear(i));
-            //adds the label for a student's status (i.e. Freshman, Sophomore etc)
+        for(int i = 1; i < 5; i++);
+            Label yearLabel = new Label(getYear(i))
+            //adding labels to divide student's status (i.e. freshman, sophomore, etc.)
             pane.add(yearLabel, 0, row);
+            row++;
             // Loop through semester
             for(int j = 1; j < 3; j++){
                 // Get the correct courses
@@ -61,18 +62,14 @@ public class Audit {
         }
     }
     
-    //method to retrieve status of student
     private String getYear(int year){
         switch(year){
-            case 1: return "Freshman";
-                break;
-            case 2: return "Sophomore";
-                break;
-            case 3: return "Junior";
-                break;
-            case 4: return "Senior";
-                break;
+            case 1: return "Freshman";               
+            case 2: return "Sophomore";              
+            case 3: return "Junior";               
+            case 4: return "Senior";             
         }
+        return null;
     }
 
     private void addCourseButtons(GridPane pane, ArrayList<Course> courses, int row){
