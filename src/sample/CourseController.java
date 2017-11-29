@@ -3,7 +3,7 @@ package sample;
 import java.util.ArrayList;
 
 /**
- * Created by Naba
+ * Created by Naba and Ben
  * This class holds all of the courses for the CET degree
  * The course controller manages all of the courses required for the degree.
  * It handles add the courses to the lists of courses.
@@ -163,32 +163,65 @@ public class CourseController {
 		else return freshman1;
 	}
 
-	public int getCurrentHours(){
-		int hours = 0;
+	/**
+	 * Gets all of the courses in the degree and adds them to a single list to access
+	 * @return ArrayList of all of the courses in the degree
+	 */
+	private ArrayList<Course> getAllCourses(){
+		ArrayList<Course> courses = new ArrayList<>();
 		for(int i = 1; i < 5; i++){
 			for(int k = 1; k < 3; k++){
-				ArrayList<Course> courses = getCourseList(i, k);
-				for(Course course: courses){
-					if(course.isCompleted()){
-						hours += course.getCreditHours();
-					}
+				courses.addAll(getCourseList(i, k));
+			}
+		}
+		return courses;
+	}
+
+	public int getRemainingSubjectHours(String subject){
+		int hours = 0;
+			for(Course course : getAllCourses()){
+				if(!course.isCompleted() && course.getSubject().equals(subject)){
+					hours += course.getCreditHours();
 				}
+			}
+
+		return hours;
+	}
+
+	public int getSubjectCurrentHours(String subject){
+		int hours = 0;
+		for(Course course : getAllCourses()){
+			if(course.isCompleted() && course.getSubject().equals(subject)){
+				hours += course.getCreditHours();
 			}
 		}
 
 		return hours;
 	}
 
-	public int getRemainingHours(){
+	/**
+	 * Gets the current total number of hours taken by the student for the degree
+	 * @return total current hours
+	 */
+	public int getCurrentTotalHours(){
 		int hours = 0;
-		for(int i = 1; i < 5; i++){
-			for(int k = 1; k < 3; k++){
-				ArrayList<Course> courses = getCourseList(i, k);
-				for(Course course: courses){
-					if(!course.isCompleted()){
-						hours += course.getCreditHours();
-					}
-				}
+		for(Course course : getAllCourses()){
+			if(course.isCompleted()){
+				hours += course.getCreditHours();
+			}
+		}
+		return hours;
+	}
+
+	/**
+	 * Gets the total remaining hours for the degree
+	 * @return total remaining hours
+	 */
+	public int getRemainingTotalHours(){
+		int hours = 0;
+		for(Course course : getAllCourses()){
+			if(!course.isCompleted()){
+				hours += course.getCreditHours();
 			}
 		}
 

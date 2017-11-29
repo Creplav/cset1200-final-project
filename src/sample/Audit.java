@@ -20,7 +20,10 @@ public class Audit {
     GridPane pane;
 
     Label nameLabel, rocketNumberLabel,
-            currentHoursLabel, remainingHoursLabel;
+            currentTotalHoursLabel, remainingHoursLabel,
+            remainingCETHoursLabel, remainingMATHHoursLabel,
+            remainingENGTHoursLabel, remainingENGLHoursLabel,
+            remainingPHYSHoursLabel, remainingElectiveHoursLabel;
 
     public Audit(Student student){
         courseController = new CourseController();
@@ -32,7 +35,7 @@ public class Audit {
         // Set the title of the stage
         primaryStage.setTitle("Audit for " + student.getName());
         this.pane = new GridPane();
-        primaryStage.setScene(new Scene(pane, 750, 600));
+        primaryStage.setScene(new Scene(pane, 1050, 700));
         getCourses();
         addLabels(pane);
         primaryStage.show();
@@ -88,15 +91,27 @@ public class Audit {
     private void addLabels(GridPane pane){
         nameLabel = new Label("Currently logged in as: ");
         rocketNumberLabel = new Label();
-        currentHoursLabel = new Label();
+        currentTotalHoursLabel = new Label();
         remainingHoursLabel = new Label();
+        remainingCETHoursLabel = new Label();
+        remainingMATHHoursLabel = new Label();
+        remainingENGTHoursLabel = new Label();
+        remainingENGLHoursLabel = new Label();
+        remainingPHYSHoursLabel = new Label();
+        remainingElectiveHoursLabel = new Label();
 
         pane.setHgap(10);
         pane.setVgap(10);
         pane.add(nameLabel, 6, 0);
         pane.add(rocketNumberLabel, 6, 1);
-        pane.add(currentHoursLabel, 6, 2);
+        pane.add(currentTotalHoursLabel, 6, 2);
         pane.add(remainingHoursLabel, 6, 3);
+        pane.add(remainingCETHoursLabel, 6, 4);
+        pane.add(remainingMATHHoursLabel, 6, 5);
+        pane.add(remainingENGTHoursLabel, 6, 6);
+        pane.add(remainingENGLHoursLabel, 6, 7);
+        pane.add(remainingPHYSHoursLabel, 6, 8);
+        pane.add(remainingElectiveHoursLabel, 6, 9);
         updateLabels();
 
     }
@@ -105,8 +120,21 @@ public class Audit {
         nameLabel.setText("Currently logged in as: " + student.getName());
         rocketNumberLabel.setText("Rocket number: " + student.getRocketNumber().substring(
                 student.getRocketNumber().length() - 4));
-        currentHoursLabel.setText("Total current hours: " + Integer.toString(courseController.getCurrentHours()));
-        remainingHoursLabel.setText("Total remaining hours: " + Integer.toString(courseController.getRemainingHours()));
-        System.out.println();
+        currentTotalHoursLabel.setText("Total current hours: "
+                + Integer.toString(courseController.getCurrentTotalHours()));
+        remainingHoursLabel.setText("Total remaining hours: "
+                + Integer.toString(courseController.getRemainingTotalHours()));
+        remainingCETHoursLabel.setText("Remaining CET hours: "
+                + Integer.toString(courseController.getRemainingSubjectHours("CET")));
+        remainingMATHHoursLabel.setText("Remaining MATH hours: "
+                + Integer.toString(courseController.getRemainingSubjectHours("MATH")));
+        remainingENGTHoursLabel.setText("Remaining ENGT hours: "
+                + Integer.toString(courseController.getRemainingSubjectHours("ENGT")));
+        remainingENGLHoursLabel.setText("Remaining ENGL hours: "
+                + Integer.toString(courseController.getRemainingSubjectHours("ENGL")));
+        remainingPHYSHoursLabel.setText("Remaining PHYS hours: "
+                + Integer.toString(courseController.getRemainingSubjectHours("PHYS")));
+        remainingElectiveHoursLabel.setText("Remaining Elective hours: "
+                + Integer.toString(courseController.getRemainingSubjectHours("Elective")));
     }
 }

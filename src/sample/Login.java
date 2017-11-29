@@ -38,7 +38,7 @@ public class Login {
             @Override
             public void handle(ActionEvent event) {
 
-                //TODO Fix the character
+                //TODO Fix the character and length
                 for (int i = 1; i < rocketNumberField.getText().length() -1; i++)
                 {
                      char l = rocketNumberField.getText().charAt(i);
