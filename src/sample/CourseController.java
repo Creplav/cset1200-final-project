@@ -87,7 +87,7 @@ public class CourseController {
 		// First semester
 		junior1.add(new Course("CET", 3210, 3, "Surveying Applications", false));
 		junior1.add(new Course("MATH", 2460, 4, "Calculus for Engr. Technology", false));
-		junior1.add(new Course("CET", 3010, 4, false));
+		junior1.add(new Course("CET", 3010, 4, "Architectural CADD", false));
 		junior1.add(new Course("Elective", 3000, 3, "Natural Science", false));
 		junior1.add(new Course("Elective", 3100, 3, "Communication Elective", false));
 		// Second semester
