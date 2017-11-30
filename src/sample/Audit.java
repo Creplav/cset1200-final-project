@@ -45,8 +45,8 @@ public class Audit {
         ArrayList<Course> courses;
         int row = 0;
         // Loop through year
-        for(int i = 1; i < 5; i++);
-            Label yearLabel = new Label(getYear(i))
+        for(int i = 1; i < 5; i++){
+            Label yearLabel = new Label(getYear(i));
             //adding labels to divide student's status (i.e. freshman, sophomore, etc.)
             pane.add(yearLabel, 0, row);
             row++;

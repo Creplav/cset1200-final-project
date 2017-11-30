@@ -18,6 +18,11 @@ import javafx.stage.Stage;
  */
 public class Login {
 
+    // Variables to check if their has already been a warning message
+    int incorrectFormatCount = 0;
+    int emptyWarningCount = 0;
+    Label emptyLabel;
+
     public void show(Stage stage){
         GridPane pane = new GridPane();
         stage.setTitle("Login");
@@ -34,30 +39,49 @@ public class Login {
         Button button = new Button("Done");
         pane.add(button, 0, 4);
         stage.show();
+
+
+
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
                 //TODO Fix the character and length
-                for (int i = 1; i < rocketNumberField.getText().length() -1; i++)
-                {
-                     char l = rocketNumberField.getText().charAt(i);
-                     if (rocketNumberField.getText().length() < 9 && !Character.isLetter(l) || !Character.isDigit(l))
-                     {
-                         pane.add(new Label("The password is not in the required format" +
-                                 "\nFormat: R00000000"), 0, 5);
-                        return;
-                     }
+
+                if(rocketNumberField.getText().length() == 9){
+                    if(rocketNumberField.getText().charAt(0) == 'R'){
+                        for(int i = 1; i < 10; i++){
+                            if(Character.isDigit(rocketNumberField.getText().charAt(i))){
+                                Student student = new Student(nameField.getText(), rocketNumberField.getText(), "Freshman");
+                                //((Node)(event.getSource())).getScene().getWindow().hide();
+                                Audit audit = new Audit(student);
+                                audit.show(stage);
+                                return;
+                            }
+                        }
+                    }
                 }
                 if(nameField.getText().equals("") || rocketNumberField.getText().equals("")){
-                    //TODO Keep this from constantly creating
-                    pane.add(new Label("At least one required text field is empty"), 0,6);
+                    if(emptyWarningCount < 1){
+                        emptyLabel = new Label("At least one required text field is empty");
+                        pane.add(emptyLabel, 0,6);
+                        emptyWarningCount++;
+                    }
                     return;
                 }
-                Student student = new Student(nameField.getText(), rocketNumberField.getText(), "Freshman");
-                //((Node)(event.getSource())).getScene().getWindow().hide();
-                Audit audit = new Audit(student);
-                audit.show(stage);
+                if(incorrectFormatCount < 1){
+
+                    // Remove empty label
+                    if(emptyWarningCount == 1){
+                        pane.getChildren().remove(emptyLabel);
+                        emptyWarningCount--;
+                    }
+
+                    // Warn the user that they have not imputed the correct format
+                    pane.add(new Label("The Rocket Number is not in the required format" +
+                            "\nFormat: R00000000"), 0, 5);
+                    incorrectFormatCount++;
+                }
             }
         });
     }
