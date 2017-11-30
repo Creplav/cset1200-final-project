@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
+
 /**
  * Created by ben on 11/8/17.
  */
@@ -46,43 +48,75 @@ public class Login {
             @Override
             public void handle(ActionEvent event) {
 
-                //TODO Fix the character and length
-
-                if(rocketNumberField.getText().length() == 9){
-                    if(rocketNumberField.getText().charAt(0) == 'R'){
-                        for(int i = 1; i < 10; i++){
-                            if(Character.isDigit(rocketNumberField.getText().charAt(i))){
-                                Student student = new Student(nameField.getText(), rocketNumberField.getText(), "Freshman");
-                                //((Node)(event.getSource())).getScene().getWindow().hide();
-                                Audit audit = new Audit(student);
-                                audit.show(stage);
-                                return;
-                            }
-                        }
-                    }
-                }
-                if(nameField.getText().equals("") || rocketNumberField.getText().equals("")){
-                    if(emptyWarningCount < 1){
+                // Make sure no field is empty
+                if(isFieldEmpty(rocketNumberField, nameField)){
+                    if (emptyWarningCount < 1) {
                         emptyLabel = new Label("At least one required text field is empty");
-                        pane.add(emptyLabel, 0,6);
+                        pane.add(emptyLabel, 0, 6);
                         emptyWarningCount++;
+                        return;
                     }
-                    return;
                 }
-                if(incorrectFormatCount < 1){
 
-                    // Remove empty label
-                    if(emptyWarningCount == 1){
-                        pane.getChildren().remove(emptyLabel);
-                        emptyWarningCount--;
+                // Make sure rocketNumberField is valid
+                if (isRocketNumberValid(rocketNumberField)) {
+                    Student student = new Student(nameField.getText(), rocketNumberField.getText(), "Freshman");
+                    //((Node)(event.getSource())).getScene().getWindow().hide();
+                    Audit audit = new Audit(student);
+                    audit.show(stage);
+                }
+
+                // Warn the user something is wrong
+                else {
+                    if (incorrectFormatCount < 1) {
+                        // Remove empty label
+                        if (emptyWarningCount == 1) {
+                            pane.getChildren().remove(emptyLabel);
+                            emptyWarningCount--;
+                        }
+
+                        // Warn the user that they have not imputed the correct format
+                        pane.add(new Label("The Rocket Number is not in the required format" +
+                                "\nFormat: R00000000"), 0, 5);
+                        incorrectFormatCount++;
                     }
+                }
 
-                    // Warn the user that they have not imputed the correct format
-                    pane.add(new Label("The Rocket Number is not in the required format" +
-                            "\nFormat: R00000000"), 0, 5);
-                    incorrectFormatCount++;
+
+            }
+
+        });
+    }
+
+    /**
+     * Checks if one of the text fields are empty
+     * @param rocketNumberField text field for Rocket number
+     * @param nameField text field for student name
+     * @return
+     * field text size.
+     * if 0 returns false
+     * else true
+     */
+    private boolean isFieldEmpty(TextField rocketNumberField, TextField nameField){
+        return (nameField.getText().equals("") || rocketNumberField.getText().equals(""));
+    }
+
+
+    private boolean isRocketNumberValid(TextField rocketNumberField){
+        if(rocketNumberField.getText().length() == 9){
+            if(rocketNumberField.getText().charAt(0) == 'R'){
+                int count = 0;
+                for(int i = 1; i < 9; i++){
+                    if(Character.isDigit(rocketNumberField.getText().charAt(i))){
+                        count++;
+                    }
+                }
+                if(count == 8){
+                 return true;
                 }
             }
-        });
+        }
+
+        return false;
     }
 }
