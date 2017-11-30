@@ -70,7 +70,7 @@ public class CourseController {
 		// Sophomore year first semester
 		sophomore1.add(new Course("PHYS", 2020, 5, "Tech. Physics 2", false));
 		sophomore1.add(new Course("CET", 1200, 4, "Engineering Mechanics", false));
-		sophomore1.add(new Course("MATH", 2450, 4, "Calculus For Engr. Technology false));
+		sophomore1.add(new Course("MATH", 2450, 4, "Calculus For Engr. Technology", false));
 		sophomore1.add(new Course("CET", 2110, 3, "Materials Testing", false));
 		// Sophomore year second semester
 		sophomore2.add(new Course("CET", 2060, 3, "Construction Estimating", false));
@@ -114,7 +114,7 @@ public class CourseController {
 		senior2.add(new Course("CET", 4350, 4, "Soils, Foundations & Earth Struct.", false));
 		senior2.add(new Course("Elective", 4200, 3, "Prof. Dev. / Tech Elective", false));
 		senior2.add(new Course("Elective", 4300, 3, "Multi-Cultural / Social Science / Humanities", false));
-		senior2.add(new Course("Elective", 4400, 3, "Multi-Cultural / Social Science / Humanities" false));
+		senior2.add(new Course("Elective", 4400, 3, "Multi-Cultural / Social Science / Humanities", false));
 	}
 
 	/**
