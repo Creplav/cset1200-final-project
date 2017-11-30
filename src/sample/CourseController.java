@@ -49,18 +49,18 @@ public class CourseController {
 	 */
 	private void addFreshmanCourses(){
 		// Freshman year first semester
-		freshman1.add(new Course("ENGT", 1000, 1, false));
-		freshman1.add(new Course("MATH", 1330, 3, false));
-		freshman1.add(new Course("ENGL", 1110, 3, false));
-		freshman1.add(new Course("CET", 1100, 3, false));
-		freshman1.add(new Course("CET", 1150, 3, false));
-		freshman1.add(new Course("CET", 1010, 1, false));
+		freshman1.add(new Course("ENGT", 1000, 1, "Introduction to Engr. Tech", false));
+		freshman1.add(new Course("MATH", 1330, 3, "Trigonometry", false));
+		freshman1.add(new Course("ENGL", 1110, 3, "College Composition", false));
+		freshman1.add(new Course("CET", 1100, 3, "Architectur of Drafting", false));
+		freshman1.add(new Course("CET", 1150, 3, "Constr. Materials & Codes", false));
+		freshman1.add(new Course("CET", 1010, 1, "Introduction to Construction", false));
 		// Freshman Year second semester
-		freshman2.add(new Course("PHYS", 2010, 5, false));
-		freshman2.add(new Course("CET", 1210, 3, false));
-		freshman2.add(new Course("ENGL", 2950, 3, false));
-		freshman2.add(new Course("CET",1250, 3, false));
-		freshman2.add(new Course("Elective", 1000, 3, false));
+		freshman2.add(new Course("PHYS", 2010, 5, "Tech. Physics 1", false));
+		freshman2.add(new Course("CET", 1210, 3, "Surveying", false));
+		freshman2.add(new Course("ENGL", 2950, 3, "Science & Tech. Report Writing", false));
+		freshman2.add(new Course("CET",1250, 3, "Building Systems", false));
+		freshman2.add(new Course("Elective", 1000, 3, "Multi-Cultural / Social Science or Humanities EL", false));
 	}
 
 	/**
@@ -68,16 +68,16 @@ public class CourseController {
 	 */
 	private void addSophomoreCourses(){
 		// Sophomore year first semester
-		sophomore1.add(new Course("PHYS", 2020, 5, false));
-		sophomore1.add(new Course("CET", 1200, 4, false));
-		sophomore1.add(new Course("MATH", 2450, 4, false));
-		sophomore1.add(new Course("CET", 2110, 3, false));
+		sophomore1.add(new Course("PHYS", 2020, 5, "Tech. Physics 2", false));
+		sophomore1.add(new Course("CET", 1200, 4, "Engineering Mechanics", false));
+		sophomore1.add(new Course("MATH", 2450, 4, "Calculus For Engr. Technology false));
+		sophomore1.add(new Course("CET", 2110, 3, "Materials Testing", false));
 		// Sophomore year second semester
-		sophomore2.add(new Course("CET", 2060, 3, false));
-		sophomore2.add(new Course("CET", 2250, 4, false));
-		sophomore2.add(new Course("CET", 2030, 3, false));
-		sophomore2.add(new Course("CET", 2220, 3, false));
-		sophomore2.add(new Course("Elective", 2000, 3, false));
+		sophomore2.add(new Course("CET", 2060, 3, "Construction Estimating", false));
+		sophomore2.add(new Course("CET", 2250, 4, "Structural Design", false));
+		sophomore2.add(new Course("CET", 2030, 3, "Construction Graphics", false));
+		sophomore2.add(new Course("CET", 2220, 3, "Soil Mechanics", false));
+		sophomore2.add(new Course("Elective", 2000, 3, "Social Sciences / Humanities El", false));
 	}
 
 	/**
@@ -85,17 +85,17 @@ public class CourseController {
 	 */
 	private void addJuniorCourses(){
 		// First semester
-		junior1.add(new Course("CET", 3210, 3, false));
-		junior1.add(new Course("MATH", 2460, 4, false));
+		junior1.add(new Course("CET", 3210, 3, "Surveying Applications", false));
+		junior1.add(new Course("MATH", 2460, 4, "Calculus for Engr. Technology", false));
 		junior1.add(new Course("CET", 3010, 4, false));
-		junior1.add(new Course("Elective", 3000, 3, false));
-		junior1.add(new Course("Elective", 3100, 3, false));
+		junior1.add(new Course("Elective", 3000, 3, "Natural Science", false));
+		junior1.add(new Course("Elective", 3100, 3, "Communication Elective", false));
 		// Second semester
-		junior2.add(new Course("Elective", 3200, 3, false));
-		junior2.add(new Course("CET", 3160, 3, false));
-		junior2.add(new Course("ENGT", 3010, 4, false));
-		junior2.add(new Course("CET", 3220, 3, false));
-		junior2.add(new Course("CET", 3120, 3, false));
+		junior2.add(new Course("Elective", 3200, 3,"Prof. Dev. / Tech.", false));
+		junior2.add(new Course("CET", 3160, 3, "Contracts and Specifications", false));
+		junior2.add(new Course("ENGT", 3010, 4, "Appl. Stats & Struct. Design", false));
+		junior2.add(new Course("CET", 3220, 3, "Hydrology and Hydraulics", false));
+		junior2.add(new Course("CET", 3120, 3, "Advanced Constr. Materials", false));
 	}
 
 	/**
@@ -103,18 +103,18 @@ public class CourseController {
 	 */
 	private void addSeniorCourses(){
 		// First semester
-		senior1.add(new Course("CET", 4460, 3, false));
-		senior1.add(new Course("CET", 4250, 4, false));
-		senior1.add(new Course("ENGT", 3600, 3, false));
-		senior1.add(new Course("Elective", 4000, 3, false));
-		senior1.add(new Course("Elective", 4100, 3, false));
+		senior1.add(new Course("CET", 4460, 3, "Constr. Mgml and Scheduling", false));
+		senior1.add(new Course("CET", 4250, 4, "Advanced Struct. Design", false));
+		senior1.add(new Course("ENGT", 3600, 3, "Engineering Economics", false));
+		senior1.add(new Course("Elective", 4000, 3, "Humanities / Multi-Cultural", false));
+		senior1.add(new Course("Elective", 4100, 3, "Prof. Dev. / Tech.", false));
 
 		// Second semester
-		senior2.add(new Course("ENGT", 4050, 3, false));
-		senior2.add(new Course("CET", 4350, 4, false));
-		senior2.add(new Course("Elective", 4200, 3, false));
-		senior2.add(new Course("Elective", 4300, 3, false));
-		senior2.add(new Course("Elective", 4400, 3, false));
+		senior2.add(new Course("ENGT", 4050, 3, "Senior Technology Capstone", false));
+		senior2.add(new Course("CET", 4350, 4, "Soils, Foundations & Earth Struct.", false));
+		senior2.add(new Course("Elective", 4200, 3, "Prof. Dev. / Tech Elective", false));
+		senior2.add(new Course("Elective", 4300, 3, "Multi-Cultural / Social Science / Humanities", false));
+		senior2.add(new Course("Elective", 4400, 3, "Multi-Cultural / Social Science / Humanities" false));
 	}
 
 	/**
