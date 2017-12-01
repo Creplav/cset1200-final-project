@@ -3,9 +3,9 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -82,6 +82,7 @@ public class Audit {
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+
                     if(course.isCompleted()){
                         course.completed = false;
                         button.setStyle("-fx-background-color: #AA0000");
@@ -91,6 +92,9 @@ public class Audit {
                         button.setStyle("-fx-background-color: #00FF00");
                     }
                     updateLabels();
+                    if(courseController.getRemainingTotalHours() == 0){
+                        displayCompleted();
+                    }
                 }
             });
 
@@ -150,5 +154,26 @@ public class Audit {
                 + Integer.toString(courseController.getRemainingSubjectHours("PHYS")));
         remainingElectiveHoursLabel.setText("Remaining Elective hours: "
                 + Integer.toString(courseController.getRemainingSubjectHours("Elective")));
+    }
+
+    /**
+     * Displays a congratulatory message that the student has completed their degree and can graduate
+     * Opens a new dialog window with the message
+     */
+    private void displayCompleted(){
+        Dialog dialog = new Dialog();
+        // When x is clicked in title bar close the window
+        dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(event -> dialog.close());
+        // Make sure that all of the content will fit on to the dialog pane
+        dialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        // Set the title
+        dialog.setTitle("Congratulations!");
+        // Add an okay button to the dialog
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        // Display the message
+        dialog.contentTextProperty().setValue("Congratulations! You have completed all the requirements for your degree!\n" +
+                "You can now graduate!");
+        // Show the dialog and wait for user event
+        dialog.showAndWait();
     }
 }
