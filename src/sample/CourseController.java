@@ -40,10 +40,6 @@ public class CourseController {
 		addSeniorCourses();
 	}
 
-
-	//TODO Add names for the courses
-
-
 	/**
 	 * Adds courses to freshman level course lists
 	 */
@@ -52,7 +48,7 @@ public class CourseController {
 		freshman1.add(new Course("ENGT", 1000, 1, "Introduction to Engr. Tech", false));
 		freshman1.add(new Course("MATH", 1330, 3, "Trigonometry", false));
 		freshman1.add(new Course("ENGL", 1110, 3, "College Composition", false));
-		freshman1.add(new Course("CET", 1100, 3, "Architectur of Drafting", false));
+		freshman1.add(new Course("CET", 1100, 3, "Architecture of Drafting", false));
 		freshman1.add(new Course("CET", 1150, 3, "Constr. Materials & Codes", false));
 		freshman1.add(new Course("CET", 1010, 1, "Introduction to Construction", false));
 		// Freshman Year second semester
@@ -177,6 +173,12 @@ public class CourseController {
 		return courses;
 	}
 
+	/**
+	 * Gets the remaining number of hours for a particular subject
+	 * If a subject that does not exist is passed the method will return 0
+	 * @param subject subject to check for remaining hours
+	 * @return remaining hours left for that subject
+	 */
 	public int getRemainingSubjectHours(String subject){
 		int hours = 0;
 			for(Course course : getAllCourses()){

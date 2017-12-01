@@ -3,7 +3,7 @@ package sample;
 import java.util.ArrayList;
 
 /**
- * This class holds course data such as the subject, course code, and credit hours
+ * This class holds course data such as the subject, course code, course name, and credit hours
  * @author Ben
  */
 public class Course {
@@ -13,11 +13,9 @@ public class Course {
     private int courseCode;
     // The number of credit hours for the course
     private int creditHours;
-    // The grade for the class on typical grading scale, not including + and -
-    private char grade;
-    // TODO See if List is the proper data type to use
     // List of prereqs for the class
     private ArrayList<Course> prerequisites;
+    // Full name of the course i.e "Intro to Engineering"
     private String courseName;
     // Boolean for course completion
     boolean completed;
@@ -70,6 +68,12 @@ public class Course {
      * @return credit hours
      */
     public int getCreditHours() { return  this.creditHours; }
+
+    /**
+     * Gets the course name
+     * @return course name - String
+     */
+    public String getCourseName() { return this.courseName; }
 
     /**
      * Gets all the prerequisites the course has
