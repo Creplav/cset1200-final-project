@@ -22,7 +22,7 @@ public class Audit {
     private GridPane pane;
     //add grid pane inside scroll pane    
     ScrollPane sp = new ScrollPane();
-    sp.setContent(new GridPane(pane));
+    sp.setContent(pane);
 
     // Labels to display information to the user
     private Label nameLabel, rocketNumberLabel,
