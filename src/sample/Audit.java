@@ -20,6 +20,9 @@ public class Audit {
     private Student student;
     // Grid pane to align objects
     private GridPane pane;
+    //add grid pane inside scroll pane    
+    ScrollPane sp = new ScrollPane();
+    sp.setContent(new GridPane(pane));
 
     // Labels to display information to the user
     private Label nameLabel, rocketNumberLabel,
