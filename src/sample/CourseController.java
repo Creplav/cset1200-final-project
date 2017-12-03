@@ -16,7 +16,7 @@ public class CourseController {
 	private ArrayList<Course> freshman2 = new ArrayList<>();
 	private ArrayList<Course> sophomore1 = new ArrayList<>();
 	private ArrayList<Course> sophomore2 = new ArrayList<>();
-	private ArrayList<Course> junior1 = new ArrayList <>();
+	private ArrayList<Course> junior1 = new ArrayList<>();
 	private ArrayList<Course> junior2 = new ArrayList<>();
 	private ArrayList<Course> senior1 = new ArrayList<>();
 	private ArrayList<Course> senior2 = new ArrayList<>();
