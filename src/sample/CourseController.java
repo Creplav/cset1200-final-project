@@ -120,7 +120,7 @@ public class CourseController {
 	 *             2 - Sophomore
 	 *             3 - Junior
 	 *             4 - Senior
-	 * @param semester The semster within the year of school
+	 * @param semester The semester within the year of school
 	 *                 1 - Fall semester
 	 *                 2 - Spring semester
 	 * @return The chosen list - defaults to fall of freshman year
@@ -186,17 +186,6 @@ public class CourseController {
 					hours += course.getCreditHours();
 				}
 			}
-
-		return hours;
-	}
-
-	public int getSubjectCurrentHours(String subject){
-		int hours = 0;
-		for(Course course : getAllCourses()){
-			if(course.isCompleted() && course.getSubject().equals(subject)){
-				hours += course.getCreditHours();
-			}
-		}
 
 		return hours;
 	}

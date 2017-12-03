@@ -9,24 +9,16 @@ public class Student {
     private String name;
     // Rocket number for the student
     private String rocketNumber;
-    // Year of the student i.e. Freshman, Sophomore, etc...
-    private String year;
 
     /**
      * Creates a new student with a name, rocket number, and year of school
      * @param name
      * @param rocketNumber
-     * @param year String value
-     *             Can be:
-     *             1 - Freshman
-     *             2 - Sophomore
-     *             3 - Junior
-     *             4 - Senior
      */
-    public Student(String name, String rocketNumber, String year){
+
+    public Student(String name, String rocketNumber){
         this.name = name;
         this.rocketNumber = rocketNumber;
-        this.year = year;
     }
 
     /**
@@ -43,13 +35,5 @@ public class Student {
      */
     public String getRocketNumber(){
         return rocketNumber;
-    }
-
-    /**
-     * Gets the year of school that the student is in
-     * @return year of school - String
-     */
-    public String getYear(){
-        return year;
     }
 }

@@ -6,12 +6,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 /**
  * This class holds the GUI for the audit
+ * It displays all of the courses as button for the user to view and click
+ * It also displays remaining total credit hours and remaining subject credit hours
+ * @author Ben, Naba, Chris
  */
 public class Audit {
     // Course controller to access all the courses in the degree
@@ -19,7 +23,7 @@ public class Audit {
     // Student to make audit for
     private Student student;
     // Grid pane to align objects
-    private GridPane pane;
+    private GridPane pane, innerPane;
 
     // Labels to display information to the user
     private Label nameLabel, rocketNumberLabel,
@@ -45,11 +49,18 @@ public class Audit {
     public void show(Stage primaryStage){
 
         // Set the title of the stage
-        primaryStage.setTitle("Audit for " + student.getName());
+        primaryStage.setTitle("CET degree audit for " + student.getName());
         // Create a new grid pane
         this.pane = new GridPane();
         // Set the scene with width and height
         primaryStage.setScene(new Scene(pane, 1050, 700));
+        // Inner pane to go inside grid pane
+        innerPane = new GridPane();
+        // Scroll pane to hold the course buttons so that they don't
+        // get smashed by the size of the screen
+        ScrollPane scrollPane = new ScrollPane(innerPane);
+        // Add it to the main pane
+        pane.add(scrollPane, 0, 0);
         // Get courses and add buttons
         getCourses();
         // Add all the labels
@@ -69,14 +80,14 @@ public class Audit {
         for(int i = 1; i < 5; i++){
             Label yearLabel = new Label(getYear(i));
             //adding labels to divide student's status (i.e. freshman, sophomore, etc.)
-            pane.add(yearLabel, 0, row);
+            innerPane.add(yearLabel, 0, row);
             row++;
             // Loop through semester
             for(int j = 1; j < 3; j++){
                 // Get the correct courses
                 courses = courseController.getCourseList(i, j);
                 // Add the buttons
-                addCourseButtons(pane, courses, row);
+                addCourseButtons(innerPane, courses, row);
                 // Add a new row
                 row++;
             }
@@ -121,7 +132,7 @@ public class Audit {
             button.wrapTextProperty().set(true);
             button.setPrefSize(125, 125);
             // Default the color to red
-            button.setStyle("-fx-background-color: #AA0000");
+            button.setStyle("-fx-background-color: #AA0000; -fx-text-fill: #f4f4f4;");
             // Runs when the button is clicked
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -129,12 +140,12 @@ public class Audit {
                     // Reset the course to not completed and change color back to red
                     if(course.isCompleted()){
                         course.completed = false;
-                        button.setStyle("-fx-background-color: #AA0000");
+                        button.setStyle("-fx-background-color: #AA0000; -fx-text-fill: #f4f4f4;");
                     }
                     // Set the course to completed and change the color to green
                     else {
                         course.completed = true;
-                        button.setStyle("-fx-background-color: #00FF00");
+                        button.setStyle("-fx-background-color: #00FF00; -fx-text-fill: black;");
                     }
                     // Update all the labels
                     updateLabels();
@@ -162,6 +173,11 @@ public class Audit {
      * @param pane pane to add the labels to
      */
     private void addLabels(GridPane pane){
+        // Add a vBox for the information labels so that they all line up
+        VBox labelBox = new VBox(20);
+        // Add it to the pane
+        pane.add(labelBox, 1, 0);
+        // Add all of the labels
         nameLabel = new Label("Currently logged in as: ");
         rocketNumberLabel = new Label();
         currentTotalHoursLabel = new Label();
@@ -172,21 +188,21 @@ public class Audit {
         remainingENGLHoursLabel = new Label();
         remainingPHYSHoursLabel = new Label();
         remainingElectiveHoursLabel = new Label();
+        Label instructionsLabel = new Label("INSTRUCTIONS:\nTo mark a course as completed," +
+                "\nclick the corresponding course box");
 
-        // Create spacing for the labels
-        pane.setHgap(10);
-        pane.setVgap(10);
-        // Add all of the labels - add(label, column, row)
-        pane.add(nameLabel, 6, 0);
-        pane.add(rocketNumberLabel, 6, 1);
-        pane.add(currentTotalHoursLabel, 6, 2);
-        pane.add(remainingHoursLabel, 6, 3);
-        pane.add(remainingCETHoursLabel, 6, 4);
-        pane.add(remainingMATHHoursLabel, 6, 5);
-        pane.add(remainingENGTHoursLabel, 6, 6);
-        pane.add(remainingENGLHoursLabel, 6, 7);
-        pane.add(remainingPHYSHoursLabel, 6, 8);
-        pane.add(remainingElectiveHoursLabel, 6, 9);
+        // Add all of the labels to the VBox
+        labelBox.getChildren().add(nameLabel);
+        labelBox.getChildren().add(rocketNumberLabel);
+        labelBox.getChildren().add(currentTotalHoursLabel);
+        labelBox.getChildren().add(remainingHoursLabel);
+        labelBox.getChildren().add(remainingCETHoursLabel);
+        labelBox.getChildren().add(remainingMATHHoursLabel);
+        labelBox.getChildren().add(remainingENGTHoursLabel);
+        labelBox.getChildren().add(remainingENGLHoursLabel);
+        labelBox.getChildren().add(remainingPHYSHoursLabel);
+        labelBox.getChildren().add(remainingElectiveHoursLabel);
+        labelBox.getChildren().add(instructionsLabel);
         // Update all the labels to given them the proper text
         updateLabels();
 
@@ -232,8 +248,9 @@ public class Audit {
         // Add an okay button to the dialog
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         // Display the message
-        dialog.contentTextProperty().setValue("Congratulations! You have completed all the requirements for your degree!\n" +
-                "You can now graduate!");
+        dialog.contentTextProperty().setValue("Congratulations! " +
+                "You have completed all the requirements for your degree!\n"
+                + "You can now graduate!");
         // Show the dialog and wait for user event
         dialog.showAndWait();
     }

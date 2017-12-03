@@ -1,9 +1,6 @@
 package sample;
 
 
-import javafx.beans.InvalidationListener;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -13,14 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import javax.xml.soap.Text;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 /**
- * This class holds the GUI for the login screen
+ * This class holds the GUI for the login screen.
+ * It includes text boxes for entering input to send to the student class
+ * and form validation so that if the user incorrectly inputs information
+ * the program will not continue until the information is corrected.
  * @author Ben, Naba, Chris
  */
 public class Login {
@@ -84,7 +78,7 @@ public class Login {
                 // Make sure rocketNumberField is valid
                 if (isRocketNumberValid(rocketNumberField)) {
                     // Create a new student with the corresponding information
-                    Student student = new Student(nameField.getText(), rocketNumberField.getText(), "Freshman");
+                    Student student = new Student(nameField.getText(), rocketNumberField.getText());
                     // Create and show the audit for that student
                     Audit audit = new Audit(student);
                     audit.show(stage);
